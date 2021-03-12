@@ -1,0 +1,9 @@
+require: rubocop-rails
+
+AllCops:
+  Exclude:
+    - 'app/jobs/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'config.ru'
+  SuggestExtensions: false
