@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Defaults
   DEFAULT_CONFIG =
     [
