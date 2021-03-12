@@ -5,7 +5,7 @@ ruby '2.6.6'
 
 gem 'rails', '~> 6.1.3'
 gem 'puma', '~> 5.0'
-# gem 'rack-cors'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
