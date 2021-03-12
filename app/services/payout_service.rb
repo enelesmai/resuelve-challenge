@@ -1,5 +1,6 @@
 class PayoutService
     include Defaults
+    include Utils
     attr_accesor :list_to_process, :players, :teams, :config
 
     def initialize(list_to_process, config=DEFAULT_CONFIG)
@@ -24,7 +25,7 @@ class PayoutService
             end
 
             #do calculations
-            own_goal = @config.find{|c| c.nivel == player.nivel}.meta
+            own_goal = get_meta_from_config_list(@config, player.nivel)
             player.calculate_salary(current_team.percentage, own_goal)
             @players_to_return << player
             

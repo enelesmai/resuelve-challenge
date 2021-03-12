@@ -1,5 +1,6 @@
 class Team
     include ActiveModel::Model
+    include Utils
     attr_reader :name, :expected_scores, :total_scores, :levels_config 
     attr_accessor :players, :percentage
     attribute :name, :string
@@ -26,7 +27,7 @@ class Team
     # calculate expected score based on the level of each player
     def setup_expected_score
         @players.each |player| do
-            @expected_scores += @config_levels.find{ |c| c.nivel == player.nivel }.meta
+            @expected_scores += get_meta_from_config_list(@config_levels, player.nivel)
         end
     end
 
