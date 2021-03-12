@@ -1,0 +1,19 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/goals":
+    get:
+      summary: Get default goals
+      tags:
+      - goals
+      responses:
+        '200':
+          description: Returns default goals values
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
