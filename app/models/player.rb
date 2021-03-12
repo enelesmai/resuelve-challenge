@@ -9,7 +9,7 @@ class Player
     attribute :sueldo_completo, :float
     attribute :equipo, :string
 
-    def initialize(*args, config)
+    def initialize(*args)
     end
 
     # percentage value, for example: 32% will be 0.32
@@ -17,7 +17,7 @@ class Player
         @goles / meta
     end
 
-    def calculate_salary(meta, porcentaje_equipo)
+    def calculate_salary(porcentaje_equipo, meta)
         percentage_player = calculate_percentage(meta)
         avg_percentage = (percentage_player + porcentaje_equipo) / 2
         @sueldo_completo = (avg_percentage * @bono) + @sueldo
