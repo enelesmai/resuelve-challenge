@@ -1,25 +1,27 @@
 class Player
     include ActiveModel::Model
     attr_accessor :nombre, :nivel, :goles, :sueldo, :bono, :sueldo_completo, :equipo
-    attribute :nombre, :string
-    attribute :nivel, :string
-    attribute :goles, :integer
-    attribute :sueldo, :float
-    attribute :bono, :float
-    attribute :sueldo_completo, :float
-    attribute :equipo, :string
+    validates_presence_of :nombre, :nivel, :goles, :sueldo, :bono, :equipo
 
     def initialize(*args)
+        args = args[0]
+        @nombre = args[:nombre]
+        @nivel  = args[:nivel]
+        @goles  = args[:goles]
+        @sueldo = args[:sueldo]
+        @bono   = args[:bono]
+        @equipo = args[:equipo]
     end
 
     # percentage value, for example: 32% will be 0.32
     def calculate_percentage(meta)
-        @goles / meta
+        return 0 if meta<0
+        (@goles.to_f / meta.to_f).to_f
     end
 
     def calculate_salary(porcentaje_equipo, meta)
         percentage_player = calculate_percentage(meta)
-        avg_percentage = (percentage_player + porcentaje_equipo) / 2
-        @sueldo_completo = (avg_percentage * @bono) + @sueldo
+        avg_percentage = (percentage_player.to_f + porcentaje_equipo.to_f) / 2
+        @sueldo_completo = (avg_percentage.to_f * @bono) + @sueldo
     end
 end
