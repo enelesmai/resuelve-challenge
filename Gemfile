@@ -9,6 +9,7 @@ gem 'puma', '~> 5.0'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 6.1.3'
 gem 'rubocop-rails', require: false
+gem 'rails_param'
 
 # Swagger
 gem 'rswag-api'
