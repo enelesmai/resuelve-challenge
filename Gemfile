@@ -7,9 +7,14 @@ gem 'rails', '~> 6.1.3'
 gem 'puma', '~> 5.0'
 gem 'rack-cors', :require => 'rack/cors'
 
+# Swagger
+gem 'rswag-api'
+gem 'rswag-ui'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :development do
