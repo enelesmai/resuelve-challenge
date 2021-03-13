@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Defaults
-  DEFAULT_CONFIG ={ configuracion:
+  DEFAULT_CONFIG = { configuracion:
     [
       {
         nivel: 'A',
