@@ -1,74 +1,149 @@
-# Project Name
+# Prueba de Ingeniería Resuelve
 
-> One paragraph statement about the project.
+> API desarrollada en Ruby on Rails como propuesta de solución para la prueba de backend de [Ingeniería Resuelve](https://github.com/resuelve/prueba-ing-backend)
 
-![screenshot](./app_screenshot.png)
+![image](https://user-images.githubusercontent.com/5160907/111025320-fe5a3080-83a8-11eb-91d6-2f718e33e69f.png)
 
-Additional description about the project and its features.
+Se desarrolló bajo el esquema MVC de Ruby on Rails y configurando la aplicación como API only = true, por lo que en este caso no se usan Views.
 
-## Built With
+## Desarrollada, probada, documentada y publicada con los siguientes lenguajes y herramientas
 
-- Major languages,
-- frameworks,
-- technologies used
+- Ruby 2.6.6,
+- Rails 6.1.13,
+- Rspec
+- Swagger,
+- Docker 20.10.5, 
+- Travis, 
+- Heroku
 
-## Live Demo
+## Demo
 
-[Live Demo Link](https://livedemo.com)
-
+[Click aquí para visitar la versión en `Heroku` de esta API](https://resuelve-challenge.herokuapp.com/api-docs)
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
+Para obtener una copia local y ejecutar sigue los pasos que se describen a continuación.
 
 
-To get a local copy up and running follow these simple example steps.
+### Prerequisitos
 
-### Prerequisites
+Es necesario tener instalada la versión 2.6.6 de Ruby para ejecutar la aplicación, se recomienda utilizar algún gestor de versiones de ruby como rvm o rbenv. En este caso utilizamos rvm:
+
+    # Instalar versión requerida
+    $ rvm install 2.6.6
+
+Una vez instalado indicar que se desea utilizar esa versión:
+
+    # Usar la versión requerida
+    $ rvm use 2.6.6
+
+En caso de no tener rvm instalado, seguir la [documentación oficial para instalar](https://rvm.io/rvm/install), según el sistema operativo que se maneje.
+
 
 ### Setup
 
-### Install
+Clonar este repositorio en la máquina local:
 
-### Usage
-
-### Run tests
-
-### Deployment
+    # Clonar el repositorio
+    $ git clone git@github.com:enelesmai/resuelve-challenge.git
 
 
+### Instalación
 
-## Authors
+Ejecutar los siguientes comandos para instalar dependencias
 
-👤 **Author1**
+    # Instalar bundle
+    $ gem install bundle
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+    # Instalar gemas utilizadas y dependencias
+    $ bundle install
 
-👤 **Author2**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+### Información de Uso
 
-## 🤝 Contributing
+Escribir el siguiente comando para iniciar la aplicación
 
-Contributions, issues and feature requests are welcome!
+    # Iniciar el servidor local
+    $ rails s
 
-Feel free to check the [issues page](issues/).
+La aplicación cuenta con dos endpoints: `/configs` es meramente informativo, mostrará un ejemplo de objeto de configuración y `/payouts` es el endpoint que procesa los datos según lo solicitado en la prueba.
 
-## Show your support
+Revisar la documentación para conocer la estructura de los datos que se consumen y/o se producen con estos endpoint.
 
-Give a ⭐️ if you like this project!
+Para acceder a la documentación en el entorno local visite el siguiente enlace:
 
-## Acknowledgments
+    [http://localhost:3000/api-docs/index.html](http://localhost:3000/api-docs/index.html)
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+o en `Heroku`:
 
-## 📝 License
+    [https://resuelve-challenge.herokuapp.com/api-docs](https://resuelve-challenge.herokuapp.com/api-docs)
 
-This project is [MIT](lic.url) licensed.
+
+### Ejecutar Pruebas
+
+Este proyecto tiene dos tipos de tests, algunos de ellos escritos para generar la documentación de `Swagger`, son los referentes a los endpoints visibles. Para correr esos tests se ejecuta el siguiente comando sobre en ambiente TEST:
+
+    $ RAILS_ENV=test rails rswag
+
+Los test de Rspec se utilizaron para escribir los casos y validaciones de los modelos y el servicio desarrollados, ejecutar con el siguiente comando:
+
+    $ rspec
+
+
+### Documentación
+
+La documentación se generó utilizando la herramienta swagger, los test que generaron esta documentación se encuentran en los archivos listados a continuación:
+* spec/requests/api/configs_spec.rb
+* spec/requests/api/payouts_spec.rb
+
+en caso de realizar cambios en el esquema/objeto que se va a recibir o de actualizar descripciones se debe correr el siguiente comando para que la documentación se actualice:
+
+    # Generar documentación rswag
+    $ rake rswag:specs:swaggerize
+
+
+### Docker
+
+Para ejecutar la aplicación utilizando docker se debe tener instalado Docker en el equipo. Instalar la versión desde [Docker Hub](https://docs.docker.com/get-docker/), siguiendo las isntrucciones según el sistema operativo correspondiente.
+Si deseas crear un contenedor de 0 puedes revisar el siguiente repositorio [docker-container-for-ror](https://github.com/enelesmai/docker-container-for-ror).
+
+Para levantar el servicio con docker escribir el siguiente comando:
+
+    $ docker-compose up -d
+
+Para verificar que ha funcionado correctamente visitar la liga local:
+
+    http://localhost:3000/
+
+
+## 🤝 Trabajo Futuro
+
+La prueba contiene un Bonus para ingresar configuraciones a través de un parámetro, para lo cual ya está preparada la aplicación. Como trabajo futuro se deben escribir los tests correspondientes a dicha funcionalidad y cubrir posibles casos de excepción.
+
+
+## Autora
+
+👤 **Xóchitl Selene Flores Pérez**
+
+- Github: [@enelesmai](https://github.com/enelesmai)
+- Twitter: [@enelesmai](https://twitter.com/enelesmai)
+- Linkedin: [in/xochitlselene](https://linkedin.com/in/xochitlselene)
+
+
+## 🤝 Contribuciones
+
+Contribuciones, defectos y solicitud de nuevas funcionalidades ¡son bienvenidas!
+
+Siéntete libre de reportar o revisar la sección de [issues](issues/).
+
+
+## Muestra tu apoyo ;)
+
+Dame una ⭐️ si te gusta este proyecto!
+
+
+## Agradecimientos
+
+- A Ingeniería Resuelve por este reto
+- Inspiración
+- Familia <3
