@@ -104,10 +104,9 @@ RSpec.describe 'Payouts API' do
 
             it 'returns a list of players objects with complete salary calculated for El Rulo' do
               result = JSON.parse(response.body)
-              p1 = result['jugadores'].find{|player| player[:nombre] == 'El Rulo'}
-              r1 = valid_response_sample['jugadores'].find{|player| player[:nombre] == 'El Rulo'}
-              expect(14250).to eq(14250)
-              #expect(p1.sueldo_completo).to eq(r1.sueldo_completo)
+              p1 = result['jugadores'].find{|p| p['nombre'] == 'El Rulo'}
+              r1 = valid_response_sample['jugadores'].find{|p| p['nombre'] == 'El Rulo'}
+              expect(p1['sueldo_completo'].to_f).to eq(r1['sueldo_completo'].to_f)
             end
 
           end
