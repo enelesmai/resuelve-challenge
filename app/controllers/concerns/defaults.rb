@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Defaults
-  DEFAULT_CONFIG =
+  DEFAULT_CONFIG ={ configuracion:
     [
       {
         nivel: 'A',
@@ -19,7 +19,7 @@ module Defaults
         nivel: 'Cuauh',
         meta: 20
       }
-    ].freeze
+    ] }.freeze
 
   SAMPLE_RESPONSE = { jugadores: [
     {

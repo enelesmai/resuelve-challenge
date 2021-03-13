@@ -1,12 +1,57 @@
+
 # frozen_string_literal: true
 
 require 'swagger_helper'
 
-RSpec.describe 'Payouts API' do
+#test created for swaggerize
+describe 'Payouts API' do
+
+  path '/api/v1/payouts' do
+
+    post 'Receive a list of players to calculate paysheet' do
+      tags 'Payouts'
+      consumes 'application/json'
+      produces 'application/json'
+      parameter name: :jugadores, in: :body, schema: {
+        type: :object,
+        properties: {
+          jugadores: { 
+            type: :array,
+            items: { 
+              type: :object,
+                properties: {
+                  nombre: { type: :string },
+                  nivel: { type: :string },
+                  goles: { type: :integer },
+                  sueldo: { type: :number },
+                  bono: { type: :number },
+                  sueldo_completo: { type: :number },
+                  equipo: { type: :string }
+                }
+            }
+          }
+        }
+      }
+
+      response '200', 'returns paysheet' do
+        let(:jugadores) { sample_request_json }
+        run_test!
+      end
+
+      response '400', 'invalid request' do
+        let(:jugadores) { { title: 'foo' } }
+        run_test!
+      end
+    end
+  end
+
+end
+
+describe 'Payouts API' do
   # initialize test data
 
   # Test suite for POST /payouts
-  describe 'POST /payouts' do
+  describe 'POST /payouts', type: :request do
     # valid payload
     let(:valid_input_sample) { sample_request_json }
     # valid response

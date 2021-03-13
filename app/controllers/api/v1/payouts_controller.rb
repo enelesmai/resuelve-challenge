@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    # Endpoint to calculate payouts given a list of players with/without categories configuration
+    # Endpoint to calculate payouts given a list of players with/without goals configuration
     class PayoutsController < ApplicationController
       include Validations
       include Response

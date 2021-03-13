@@ -20,7 +20,7 @@ class PayoutService
     @players_to_return = []
   end
 
-  def cast_to_player
+  def cast_to_player(list)
     list.collect do |item|
       Player.new(
         nombre: item[:nombre],
