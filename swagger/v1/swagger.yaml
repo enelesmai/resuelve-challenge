@@ -49,7 +49,7 @@ paths:
                       equipo:
                         type: string
 servers:
-- url: http://{defaultHost}
+- url: https://{defaultHost}
   variables:
     defaultHost:
       default: resuelve-challenge.herokuapp.com
