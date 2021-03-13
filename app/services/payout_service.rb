@@ -42,6 +42,16 @@ class PayoutService
             @players_to_return << player
             
         end
-        @players_to_return
+        @players_to_return.map {
+            |player| PlayerResponse.new(
+                nombre: player.nombre,
+                goles_minimos: player.goles_minimos,
+                goles: player.goles, 
+                sueldo: player.sueldo,
+                bono: player.bono,
+                sueldo_completo: player.sueldo_completo,
+                equipo: player.equipo
+            )
+        }
     end
 end

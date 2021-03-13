@@ -1,6 +1,6 @@
 class Player
     include ActiveModel::Model
-    attr_accessor :nombre, :nivel, :goles, :sueldo, :bono, :sueldo_completo, :equipo
+    attr_accessor :nombre, :nivel, :goles, :sueldo, :bono, :sueldo_completo, :equipo, :goles_minimos
     validates_presence_of :nombre, :nivel, :goles, :sueldo, :bono, :equipo
 
     def initialize(*args)
@@ -12,10 +12,12 @@ class Player
         @bono   = args[:bono]
         @equipo = args[:equipo]
         @sueldo_completo = args[:sueldo_completo]
+        @goles_minimos = 0
     end
 
     # percentage value, for example: 32% will be 0.32
     def calculate_percentage(meta)
+        @goles_minimos = meta
         return 0 if meta<0
         (@goles.to_f / meta.to_f)
     end
