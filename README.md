@@ -20,6 +20,56 @@ Se desarrolló bajo el esquema MVC de Ruby on Rails y configurando la aplicació
 
 [Click aquí para visitar la versión en `Heroku` de esta API](https://resuelve-challenge.herokuapp.com/api-docs)
 
+* Para probar el endpoint /payouts ingresa el [json de request]() presentado en las especificaciones de la prueba:
+
+        {
+            "jugadores" : [  
+                {  
+                    "nombre":"Juan Perez",
+                    "nivel":"C",
+                    "goles":10,
+                    "sueldo":50000,
+                    "bono":25000,
+                    "sueldo_completo":null,
+                    "equipo":"rojo"
+                },
+                {  
+                    "nombre":"EL Cuauh",
+                    "nivel":"Cuauh",
+                    "goles":30,
+                    "sueldo":100000,
+                    "bono":30000,
+                    "sueldo_completo":null,
+                    "equipo":"azul"
+                },
+                {  
+                    "nombre":"Cosme Fulanito",
+                    "nivel":"A",
+                    "goles":7,
+                    "sueldo":20000,
+                    "bono":10000,
+                    "sueldo_completo":null,
+                    "equipo":"azul"
+
+                },
+                {  
+                    "nombre":"El Rulo",
+                    "nivel":"B",
+                    "goles":9,
+                    "sueldo":30000,
+                    "bono":15000,
+                    "sueldo_completo":null,
+                    "equipo":"rojo"
+
+                }
+            ]
+        }
+
+
+Repuesta de la API:
+
+![image](https://user-images.githubusercontent.com/5160907/111032832-cfa57f80-83d3-11eb-81bc-263196ef49b5.png)
+
 ## Getting Started
 
 Para obtener una copia local y ejecutar sigue los pasos que se describen a continuación.
