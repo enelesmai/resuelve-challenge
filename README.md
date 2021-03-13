@@ -20,7 +20,7 @@ Se desarrolló bajo el esquema MVC de Ruby on Rails y configurando la aplicació
 
 [Click aquí para visitar la versión en `Heroku` de esta API](https://resuelve-challenge.herokuapp.com/api-docs)
 
-* Para probar el endpoint /payouts ingresa el [json de request]() presentado en las especificaciones de la prueba:
+* Para probar el endpoint `/payouts` ingresa el [json de request](https://github.com/resuelve/prueba-ing-backend) presentado en las especificaciones de la prueba:
 
         {
             "jugadores" : [  
