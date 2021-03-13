@@ -4,61 +4,8 @@ require 'spec_helper'
 RSpec.describe 'Payout Service' do
     
   let(:sample_request) { sample_request_json }
-  let(:valid_request) { PayoutService.new(
-    
-      [
-        {
-    nombre: 'Daniel', 
-    nivel: 'A', 
-    goles: 5, 
-    sueldo: 20000, 
-    bono: 2500, 
-    equipo: 'Azul'},
-    {
-    nombre: 'Carlos', 
-    nivel: 'B', 
-    goles: 9, 
-    sueldo: 50000, 
-    bono: 8000, 
-    equipo: 'Azul'},
-    {
-    nombre: 'Alessa', 
-    nivel: 'C', 
-    goles: 5, 
-    sueldo: 60000, 
-    bono: 10000, 
-    equipo: 'Verde'}
-    ], nil
-  )
-}
-
-let(:valid_response) { 
-      [
-        Player.new(
-    nombre: 'Daniel', 
-    nivel: 'A', 
-    goles: 5, 
-    sueldo: 20000, 
-    bono: 2500, 
-    equipo: 'Azul',
-    sueldo_completo: 22416.66
-        ),
-      Player.new(nombre: 'Carlos', 
-    nivel: 'B', 
-    goles: 9, 
-    sueldo: 50000, 
-    bono: 8000, 
-    equipo: 'Azul',
-  sueldo_completo:57333.33 ),
-      Player.new(nombre: 'Alessa', 
-    nivel: 'C', 
-    goles: 5, 
-    sueldo: 60000, 
-    bono: 10000, 
-    equipo: 'Verde',
-    sueldo_completo: 63333.33)
-    ]
-}
+  let(:valid_request) { custom_valid_request }
+  let(:valid_response) { custom_valid_response }
 
   describe '#Processing a valid list of players' do
     context 'when creating a new request' do

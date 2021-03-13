@@ -2,47 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'Team model' do
 
-  let(:players_list) { [Player.new(
-    nombre: 'Daniel', 
-    nivel: 'A', 
-    goles: 5, 
-    sueldo: 20000, 
-    bono: 2500, 
-    equipo: 'Azul'),
-    Player.new(
-    nombre: 'Carlos', 
-    nivel: 'B', 
-    goles: 9, 
-    sueldo: 50000, 
-    bono: 8000, 
-    equipo: 'Azul'),
-    Player.new(
-    nombre: 'Alessa', 
-    nivel: 'C', 
-    goles: 5, 
-    sueldo: 60000, 
-    bono: 10000, 
-    equipo: 'Verde')
-    ]
-  }
+  let(:players_list) { my_players_list }
 
-  let(:config) {[
-      { nivel: 'A',
-        meta: 10    
-        },
-        {
-            nivel: 'B',
-            meta: 12    
-        },
-        {nivel: 'C',
-        meta: 15    
-    }
-  ]}
+  let(:config) { my_config }
 
-  let(:valid_team) { Team.new(
-    'Azul', 
-    players_list,
-    config)}
+  let(:valid_team) { my_team }
 
   describe '#Initialize a team' do
     context 'when creating a team' do

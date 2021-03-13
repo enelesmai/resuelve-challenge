@@ -12,18 +12,8 @@ RSpec.describe 'Payouts API' do
         # valid response
         let(:valid_response_sample) { sample_response_json }
         # valid payload one player
-        let(:valid_attributes) { { jugadores: [ {  
-            nombre:"Juan Perez",
-            nivel:"C",
-            goles:10,
-            sueldo:50000,
-            bono:25000,
-            sueldo_completo:nil,
-            equipo:"rojo"
-         }] } }
-         let(:invalid_attributes) { { jugadores: [ {  
-            nombre:"Eloy"
-         }] } }
+        let(:valid_attributes) { list_with_valid_attributes }
+         let(:invalid_attributes) { list_with_invalid_attributes }
         
         context 'when the request is empty' do
             before { post '/api/v1/payouts' }

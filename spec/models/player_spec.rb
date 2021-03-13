@@ -2,13 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Player model' do
     
-  let(:valid_player) { Player.new(
-    nombre: 'Juan', 
-    nivel: 'A', 
-    goles: 5, 
-    sueldo: 20000, 
-    bono: 2500, 
-    equipo: 'Azul')}
+  let(:valid_player) { my_valid_player }
 
   describe '#Creates a new player' do
     context 'when creating a new player' do
