@@ -31,7 +31,7 @@ class Team
     # percentage value, for example: 32% will be 0.32
     def calculate_percentage
         setup_expected_score
-        @percentage = @total_scores / @expected_scores
+        @percentage = (@total_scores.to_f / @expected_scores.to_f)
     end
 
 end

@@ -26,11 +26,8 @@ class PayoutService
 
     #for each player on the received list it is going to calculate the complete salary
     def process
-        @list_to_process.each do |item| 
+        @list_to_process.each do |player| 
             
-            #cast item on the list as player
-            player = item
-
             #if player team is not already on the list, it will be calculated and added
             current_team = @teams.find{ |team| team.name == player.equipo }
             if current_team.nil?
@@ -40,8 +37,8 @@ class PayoutService
             end
 
             #do calculations
-            own_goal = get_meta_from_config_list(@config, player.nivel)
-            player.calculate_salary(current_team.percentage, own_goal)
+            meta = get_meta_from_config_list(@config, player.nivel)
+            player.calculate_salary(current_team.percentage, meta)
             @players_to_return << player
             
         end

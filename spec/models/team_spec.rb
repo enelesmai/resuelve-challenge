@@ -73,7 +73,7 @@ RSpec.describe 'Team model' do
       end
       it "calculates percentage scored" do
         valid_team.calculate_percentage
-        expect(valid_team.percentage).to eq(14/22)
+        expect(valid_team.percentage).to eq((14.to_f/22.to_f))
       end
     end
   end
