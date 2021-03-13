@@ -1,26 +1,19 @@
+# frozen_string_literal: true
+
+# app/controllers/concerns/validations.rb
+# module for adding params validations
 module Validations
-    def validate_param(params)
-        
-        if params.nil? 
-            return false
-        end
+  def validate_param(params)
+    return false if params.nil?
 
-        if params.empty?
-            return false
-        end
+    return false if params.empty?
 
-        if params[:jugadores].nil?
-            return false
-        end
+    return false if params[:jugadores].nil?
 
-        if params[:jugadores].empty?
-            return false
-        end
+    return false if params[:jugadores].empty?
 
-        if params[:jugadores].count == 1 && params[:jugadores][0]==""
-            return false
-        end
+    return false if params[:jugadores].count == 1 && params[:jugadores][0] == ''
 
-        true
-    end
+    true
+  end
 end
