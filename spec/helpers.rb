@@ -119,7 +119,8 @@ module Helpers
   end
 
   def my_config
-    [
+    {
+    configuracion: [
       { nivel: 'A',
         meta: 10 },
       {
@@ -129,6 +130,7 @@ module Helpers
       { nivel: 'C',
         meta: 15 }
     ]
+  }
   end
 
   def my_team

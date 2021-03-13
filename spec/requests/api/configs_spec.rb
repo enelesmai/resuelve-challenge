@@ -10,8 +10,8 @@ describe 'Config API' do
 
       response 200, 'Returns default config values' do
         it 'has 4 levels' do
-          body = JSON(response.body.data)
-          expect(body.count).to eq(4)
+          data = JSON.parse(response.body)
+          expect(data['configuracion'].count).to eq(4)
         end
       end
     end
