@@ -4,16 +4,52 @@ info:
   title: API V1
   version: v1
 paths:
-  "/api/v1/goals":
+  "/api/v1/configs":
     get:
-      summary: Get default goals
+      summary: Get an example of configuration object
       tags:
-      - goals
+      - configs
       responses:
         '200':
-          description: Returns default goals values
+          description: Returns default config values
+  "/api/v1/payouts":
+    post:
+      summary: Receive a list of players to calculate paysheet
+      tags:
+      - Payouts
+      parameters: []
+      responses:
+        '200':
+          description: returns paysheet
+        '400':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jugadores:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      nombre:
+                        type: string
+                      nivel:
+                        type: string
+                      goles:
+                        type: integer
+                      sueldo:
+                        type: number
+                      bono:
+                        type: number
+                      sueldo_completo:
+                        type: number
+                      equipo:
+                        type: string
 servers:
-- url: http://{defaultHost}
+- url: https://{defaultHost}
   variables:
     defaultHost:
-      default: localhost:3000
+      default: resuelve-challenge.herokuapp.com

@@ -8,6 +8,7 @@ ruby '2.6.6'
 gem 'puma', '~> 5.0'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rails', '~> 6.1.3'
+gem 'rails_param'
 gem 'rubocop-rails', require: false
 
 # Swagger

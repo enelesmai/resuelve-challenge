@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require_relative './helpers'
 
 RSpec.configure do |config|
   # Specify a root folder where Swagger JSON files are generated
@@ -24,10 +25,10 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'http://{defaultHost}',
+          url: 'https://{defaultHost}',
           variables: {
             defaultHost: {
-              default: 'localhost:3000'
+              default: 'resuelve-challenge.herokuapp.com'
             }
           }
         }
@@ -40,4 +41,6 @@ RSpec.configure do |config|
   # the key, this may want to be changed to avoid putting yaml in json files.
   # Defaults to json. Accepts ':json' and ':yaml'.
   config.swagger_format = :yaml
+  # include Helpers
+  config.include Helpers
 end

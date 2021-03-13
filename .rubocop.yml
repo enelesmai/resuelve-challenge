@@ -6,4 +6,16 @@ AllCops:
     - 'bin/**/*'
     - 'config/**/*'
     - 'config.ru'
+    - 'spec/helpers.rb'
+    - 'spec/models/**/*'
+    - 'spec/services/**/*'
+    - 'spec/requests/**/*'
+
   SuggestExtensions: false
+
+Metrics/AbcSize:
+  IgnoredMethods:
+    - 'process_data'
+    - 'calculate_paysheet'
+Metrics/MethodLength:
+  Max: 30
