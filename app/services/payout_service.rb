@@ -1,26 +1,41 @@
 class PayoutService
     include Defaults
     include Utils
-    attr_accesor :list_to_process, :players, :teams, :config
+    include ActiveModel::Model
+    attr_accessor :list_to_process, :players, :teams, :config
+    validates_presence_of :list_to_process
 
     def initialize(list_to_process, config=DEFAULT_CONFIG)
-        @list = list
+        return if list_to_process.nil?
+        @list_to_process = 
+            list_to_process.collect { |item| 
+                Player.new(
+                    nombre: item[:nombre],
+                    nivel: item[:nivel],
+                    goles: item[:goles],
+                    sueldo: item[:sueldo],
+                    bono: item[:bono],
+                    equipo: item[:equipo]
+                )
+            }
         @config = config
+        @config = DEFAULT_CONFIG if config.nil? 
         @teams = []
         @players_to_return = []
     end
 
     #for each player on the received list it is going to calculate the complete salary
-    def procces
-        @list.each |item| do 
+    def process
+        @list_to_process.each do |item| 
             
             #cast item on the list as player
-            player = Player.new(...item)
+            player = item
 
             #if player team is not already on the list, it will be calculated and added
             current_team = @teams.find{ |team| team.name == player.equipo }
-            if exist_team.nil?
-                current_team = Team.new(player.equipo, list, config)
+            if current_team.nil?
+                current_team = Team.new(player.equipo, @list_to_process, @config)
+                current_team.calculate_percentage
                 @teams << current_team
             end
 
