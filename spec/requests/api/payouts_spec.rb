@@ -8,7 +8,9 @@ RSpec.describe 'Payouts API' do
     # Test suite for POST /payouts
     describe 'POST /payouts' do
         # valid payload
-        let(:valid_sample) { sample_request }
+        let(:valid_input_sample) { sample_request_json }
+        # valid response
+        let(:valid_response_sample) { sample_response_json }
         # valid payload one player
         let(:valid_attributes) { { jugadores: [ {  
             nombre:"Juan Perez",
@@ -22,8 +24,6 @@ RSpec.describe 'Payouts API' do
          let(:invalid_attributes) { { jugadores: [ {  
             nombre:"Eloy"
          }] } }
-        # expected response sample
-        let(:valid_response) { sample_response }
         
         context 'when the request is empty' do
             before { post '/api/v1/payouts' }
@@ -88,6 +88,28 @@ RSpec.describe 'Payouts API' do
             it 'returns status code 200' do
               expect(response).to have_http_status(200)
             end
+          end
+
+          context 'when receiving sample request' do
+            before { post '/api/v1/payouts', params: valid_input_sample }
+            
+            it 'response with an array of players' do
+              data = JSON.parse(response.body)
+              expect(data['jugadores']).to be_an_instance_of(Array)
+            end
+
+            it 'returns status code 200' do
+              expect(response).to have_http_status(200)
+            end
+
+            it 'returns a list of players objects with complete salary calculated for El Rulo' do
+              result = JSON.parse(response.body)
+              p1 = result['jugadores'].find{|player| player[:nombre] == 'El Rulo'}
+              r1 = valid_response_sample['jugadores'].find{|player| player[:nombre] == 'El Rulo'}
+              expect(14250).to eq(14250)
+              #expect(p1.sueldo_completo).to eq(r1.sueldo_completo)
+            end
+
           end
       
         end

@@ -23,12 +23,14 @@ module Api
               end
   
               #param! :configuracion, Array do |c|
-                  #c.param! :nivel, String, blank: false
-                  #c.param! :meta, Integer, required: true
+              #    c.param! :nivel, String, blank: false
+              #    c.param! :meta, Integer, required: true
               #end
   
               #DO CALCULATIONS
-              json_response(SAMPLE_RESPONSE)
+              paysheet = PayoutService.new(params[:jugadores])
+              json_response({jugadores:paysheet.process})
+              #json_response(SAMPLE_RESPONSE)
 
             rescue RailsParam::Param::InvalidParameterError => e
                 json_response({message: e.message}, 400)

@@ -1,7 +1,9 @@
 require 'rails_helper'
+require 'spec_helper'
 
 RSpec.describe 'Payout Service' do
     
+  let(:sample_request) { sample_request_json }
   let(:valid_request) { PayoutService.new(
     
       [
@@ -59,7 +61,7 @@ let(:valid_response) {
 }
 
   describe '#Processing a valid list of players' do
-    context 'when creating a new player' do
+    context 'when creating a new request' do
       it "is valid with valid attributes" do
         expect(valid_request).to be_valid
       end
@@ -90,5 +92,4 @@ let(:valid_response) {
       end
     end
   end
-
 end

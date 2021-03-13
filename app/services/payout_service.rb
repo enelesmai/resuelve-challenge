@@ -12,9 +12,9 @@ class PayoutService
                 Player.new(
                     nombre: item[:nombre],
                     nivel: item[:nivel],
-                    goles: item[:goles],
-                    sueldo: item[:sueldo],
-                    bono: item[:bono],
+                    goles: item[:goles].to_i,
+                    sueldo: item[:sueldo].to_f,
+                    bono: item[:bono].to_f,
                     equipo: item[:equipo]
                 )
             }
